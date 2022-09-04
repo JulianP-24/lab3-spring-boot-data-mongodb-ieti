@@ -51,11 +51,23 @@ public class UserServiceMongoDB implements UserService {
 
     @Override
     public UserDto mapToDto(User user) {
-        return null;
+        UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
+        userDto.setName(user.getName());
+        userDto.setEmail(user.getEmail());
+        userDto.setLastName(user.getLastName());
+        userDto.setCreatedAt(user.getCreatedAt());
+        return userDto;
     }
 
     @Override
     public User mapToEntity(UserDto userDto) {
-        return null;
+        User user = new User();
+        user.setId(userDto.getId());
+        user.setName(userDto.getName());
+        user.setEmail(userDto.getEmail());
+        user.setLastName(userDto.getLastName());
+        user.setCreatedAt(userDto.getCreatedAt());
+        return user;
     }
 }
