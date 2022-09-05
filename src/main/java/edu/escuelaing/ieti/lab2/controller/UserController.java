@@ -37,6 +37,26 @@ public class UserController {
         return new ResponseEntity<UserDto>(userService.mapToDto(user), HttpStatus.OK);
     }
 
+    @GetMapping( "/findUsersWithNameOrLastNameLike/{queryparam}" )
+    public ResponseEntity<List<UserDto>> findUsersWithNameOrLastNameLike( @PathVariable String queryparam ) {
+        List<UserDto> listUsersDto = new ArrayList<>();
+        List<User> user =  userService.findUsersWithNameOrLastNameLike(queryparam);
+        for (User usuarios : user) {
+            listUsersDto.add(userService.mapToDto(usuarios));
+        }
+        return new ResponseEntity<List<UserDto>>(listUsersDto, HttpStatus.OK);
+    }
+
+    @GetMapping( "/findUsersCreatedAfter/{startDate}" )
+    public ResponseEntity<List<UserDto>> findUsersCreatedAfter( @PathVariable Date startDate ) {
+        List<UserDto> listUsersDto = new ArrayList<>();
+        List<User> user =  userService.findUsersCreatedAfter(startDate);
+        for (User usuarios : user) {
+            listUsersDto.add(userService.mapToDto(usuarios));
+        }
+        return new ResponseEntity<List<UserDto>>(listUsersDto, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<UserDto> create( @RequestBody UserDto userDto ) {
         List<User> users = userService.getAll();

@@ -68,4 +68,14 @@ public class UserServiceHashMap implements UserService {
         user.setCreatedAt(userDto.getCreatedAt());
         return user;
     }
+
+    @Override
+    public List<User> findUsersWithNameOrLastNameLike(String queryText) {
+        return null;
+    }
+
+    @Override
+    public List<User> findUsersCreatedAfter(Date startDate) {
+        return null;
+    }
 }
