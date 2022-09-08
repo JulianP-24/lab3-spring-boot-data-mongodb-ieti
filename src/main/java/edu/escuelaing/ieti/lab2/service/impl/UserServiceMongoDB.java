@@ -5,6 +5,7 @@ import edu.escuelaing.ieti.lab2.entities.User;
 import edu.escuelaing.ieti.lab2.repository.UserRepository;
 import edu.escuelaing.ieti.lab2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

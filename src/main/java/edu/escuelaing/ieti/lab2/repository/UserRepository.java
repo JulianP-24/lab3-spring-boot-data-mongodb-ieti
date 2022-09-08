@@ -8,9 +8,9 @@ import java.util.Date;
 import java.util.List;
 
 public interface UserRepository extends MongoRepository<User, String> {
-    @Query("SELECT * from User WHERE name.queryText LIKE ?1 or lastName.queryText LIKE ?1")
+    @Query("{$or: [{name: ?0}, {lastName: ?0}]}")
     List<User> findUsersWithNameOrLastNameLike(String queryText);
 
-    @Query("SELECT * FROM User WHERE createdAt.startDate AFTER ?1")
+    @Query("{createdAt : {$gt : ?0 }}")
     List<User> findUsersCreatedAfter(Date startDate);
 }
